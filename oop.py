@@ -31,6 +31,11 @@ class User: # class name
     # def getRoles(self):
     #     return self.__role
 
+    #classmethod = mengacu parameter ke class
+    @classmethod
+    def set_total(cls, new_total):
+        User.total = new_total
+
 # abi -> instance variables
 abi = User('Abi', 'abi@gmail.com', 'admin')
 print(abi.biodata())
@@ -49,6 +54,9 @@ print(xian.biodata()) #nama tidak berubah
 print(xian.__dict__)
 xian.role = 'admin'
 print(xian.biodata()) #role berubah
+print(User.total)
+
+User.set_total(10)
 print(User.total)
 
 # print(xian.__role) #output error
