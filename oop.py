@@ -36,6 +36,10 @@ class User: # class name
     def set_total(cls, new_total):
         User.total = new_total
 
+    @staticmethod
+    def print_total():
+        print(f'Total user: {User.total}')
+
 # abi -> instance variables
 abi = User('Abi', 'abi@gmail.com', 'admin')
 print(abi.biodata())
@@ -56,8 +60,10 @@ xian.role = 'admin'
 print(xian.biodata()) #role berubah
 print(User.total)
 
-User.set_total(10)
+User.set_total(10) #dari classmethod
 print(User.total)
+
+User.print_total() #dari staticmethod
 
 # print(xian.__role) #output error
 
