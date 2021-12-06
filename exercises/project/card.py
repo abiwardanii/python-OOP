@@ -35,7 +35,7 @@ class Deck:
     def deal_one(self):
         return self.all_cards.pop()
 
-new_deck = Deck()
+# new_deck = Deck()
 
 # shuffle
 # new_deck.shuffle()
@@ -67,10 +67,43 @@ class Player:
     def __str__(self):
         return f"Player {self.name} has {len(self.all_cards)} cards with value {self.value}"
 
-new_player = Player("Abi")
+# new_player = Player("Abi")
 
 # GAME SETUP
 player_one = Player("Abi")
 player_two = Player("Iba")
-# WHILE GAME ON
 
+new_deck = Deck()
+new_deck.shuffle()
+
+# SPLIT DECK
+for x in range(26):
+    player_one.add_cards(new_deck.deal_one())
+    player_two.add_cards(new_deck.deal_one())
+
+game_on = True
+
+# WHILE GAME ON
+round_num = 0
+
+while game_on:
+    round_num += 1
+    print(f"Round {round_num}")
+
+    # jika pemain 1 kehabisan kartu makan pemain 2 menang
+    if len(player_one.all_cards) == 0:
+        print('Player One out of cards. Player Two wins!')
+        game_on = False
+        break
+    # jika pemain 2 kehabisan kartu makan pemain 1 menang
+    if len(player_two.all_cards) == 0:
+        print('Player Two out of cards. Player One wins!')
+        game_on = False
+        break
+
+    # New Round
+    player_one_cards = []
+    player_one_cards.append(player_one.remove_one())
+    
+    player_two_cards = []
+    player_two_cards.append(player_two.remove_one())
